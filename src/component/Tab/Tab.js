@@ -9,16 +9,19 @@ class Tab extends Component{
             <h2>豆瓣</h2>
              <ul>
                  <li>
-                     <NavLink to="/Home">电影</NavLink>
+                     <NavLink to="/Movie">电影</NavLink>
                  </li>
                  <li>
-                     <NavLink to="/Group">图书</NavLink>
+                     <NavLink to="/Book">图书</NavLink>
                  </li>
                  <li>
                      <NavLink to="/Group">广播</NavLink>
                  </li>
                  <li>
                      <NavLink to="/Group">小组</NavLink>
+                 </li>
+                 <li className="search_tab">
+                     <NavLink to="/Search"></NavLink>
                  </li>
              </ul>
          </div>

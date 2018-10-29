@@ -1,9 +1,9 @@
 import React,{Component} from "react";
 import { NavLink,Link} from "react-router-dom";
-import "./Home.less";
+import "./Movie.less";
 import axios from "axios";
 
-class Home extends Component{
+class Movie extends Component{
     constructor(props) {
         super();
         this.state = {
@@ -15,7 +15,7 @@ class Home extends Component{
 
     componentDidMount() {
         console.warn('ok')
-        axios.get("/v2/movie/top250")
+        axios.get("/v2/movie/in_theaters")
             .then((response) => {
                 console.log(response.data);
                 this.setState({
@@ -31,7 +31,22 @@ class Home extends Component{
  render(){
      return(
          <div>
-            
+            <div className="nav">
+                <ul>
+                    <li>
+                        <NavLink to="/MovieHot">电影热映</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/MovieHot">豆瓣日历</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/MovieHot">豆瓣时间</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/MovieHot">使用豆瓣APP</NavLink>
+                    </li>
+                </ul>
+            </div>
 
             {/* 正在热映的电影 */}
             <div className="hotmovie">
@@ -67,4 +82,4 @@ class Home extends Component{
      )
  }
 }
-export default Home;
+export default Movie;
