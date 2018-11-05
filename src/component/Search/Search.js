@@ -52,8 +52,8 @@ render(){
                     {
                         this.state.showView.map((item, index) => {
                             return (
-                                <Link to={"/Detail/" + item.id}>
-                                <div key={index} className="search_list" >
+                                <Link to={"/Detail/" + item.id} key={index} >
+                                <div className="search_list" >
                                     <img src={item.images.large} alt="" />
                                     <div className="list_infos">
                                         <p>{item.title}</p>
