@@ -8,6 +8,8 @@ import Detail from "./component/Detail/Detail";
 import Search from "./component/Search/Search";
 import Book from './component/Book/Book';
 import Movie from './component/Movie/Movie';
+import Login from './component/Login/Login';
+import Dialog from './component/Dialog/Dialog';
 class App extends Component {
   render() {
     return (
@@ -16,7 +18,9 @@ class App extends Component {
           <Tab />
           <div className="content_box">
             <Switch>
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
+               <Route exact path="/Login" component={Login} />
+              <Route exact path="/" component={Dialog} />
               <Route path="/Movie" component={Movie} />
               <Route exact path="/Group" component={Group} />
               <Route path="/Detail/:id" component={Detail} />
