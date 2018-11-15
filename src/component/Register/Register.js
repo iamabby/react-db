@@ -7,6 +7,7 @@ import axios from "axios";
 
 
 
+
 class Register extends Component{
     constructor(){
         super();
@@ -40,8 +41,20 @@ class Register extends Component{
                 tips:"密码不能为空"
             })
         }
-        if(this.state.userName && this.state.passWord){
-            axios.post("https://www.taitansmart.com/gemini/user/register")
+
+        
+       
+            axios({
+                method: 'POST',
+                url:"https://www.taitansmart.com/gemini/user/register",
+                data:{
+                    account: this.state.userName,
+                    password: this.state.passWord
+                },
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })
             .then((respones)=>{
                 //校验账号
                 console.log(respones.result_code);
@@ -65,7 +78,7 @@ class Register extends Component{
             .then(error=>{
                 console.log(error);
             })
-        }
+        
 
         
     }
