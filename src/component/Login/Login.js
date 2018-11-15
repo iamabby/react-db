@@ -15,6 +15,7 @@ class  Login extends  React.Component{
               <div className="btn_block">
                 <input type="text" placeholder="用户名或手机号"/>
                 <input type="password" placeholder="密码"/>
+                <div className="tips">账号或密码不正确</div>
                 <input type="button" value="登录" className="login_btn"/>
               </div>
 

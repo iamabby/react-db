@@ -108,9 +108,13 @@
     ]
   },
   "devDependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.4.1",
+    "install": "^0.12.2",
+    "kind-of": "^6.0.2",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "react-router-dom": "^4.3.1"
   },
-  "proxy":"https://api.douban.com"
+  "proxy": "https://api.douban.com"
 }
