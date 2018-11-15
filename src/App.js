@@ -10,30 +10,36 @@ import Book from './component/Book/Book';
 import Movie from './component/Movie/Movie';
 import Login from './component/Login/Login';
 import Dialog from './component/Dialog/Dialog';
+import { observer,inject} from 'mobx-react';
 import Register from './component/Register/Register';
+@inject("commonData")
+@observer
 class App extends Component {
   render() {
+    let { commonData}= this.props
+    commonData.doIsLogin()
+    console.log(commonData.isLogin)
     return (
-     <Router>
-        <div>
-          <Tab />
-          <div className="content_box">
-            <Switch>
-              {/* <Route exact path="/" component={Home} /> */}
+      <Router>
+          <div>
+          {commonData.isLogin ? <div></div>: <Dialog></Dialog>}
+            <Tab />
+            <div className="content_box">
+              <Switch>
+                <Route exact path="/" component={Register} />
                 <Route exact path="/Login" component={Login} />
-                <Route path="/" component={Register} />`
-                {/* <Route  path="/" component={Home} /> */}
                 <Route path="/Movie" component={Movie} />
                 <Route exact path="/Group" component={Group} />
                 <Route path="/Detail/:id" component={Detail} />
                 <Route path="/Search" component={Search} />
                 <Route path="/Book" component={Book} />
-            </Switch>
+              </Switch>
+            </div>
           </div>
-        </div>
-     </Router>
+      </Router>
     );
   }
 }
+// <Route exact path="/" component={Dialog} />
 
 export default App;
