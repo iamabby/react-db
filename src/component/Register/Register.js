@@ -31,23 +31,53 @@ class Register extends Component{
         console.log(e.target.value)
     }
     registerFun(){
+        //判断邮箱
         if(!this.state.userName){
           this.setState({
               tips:"用户名不能为空"
           })
+          return false;
+        }else{
+            var reg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!reg.test(this.state.userName)){
+                this.setState({
+                    tips:"用户名不正确，请填写正确的邮箱号"
+                })
+                return false;
+            }else{
+                this.setState({
+                    tips:""
+                })
+            }
         }
+
+        //判断密码
         if(!this.state.passWord){
             this.setState({
                 tips:"密码不能为空"
             })
+            return false;
+        }else{
+            //密码为8-16位数字密码组合
+            var pwdReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+            if(!pwdReg.test(this.state.passWord)){
+               this.setState({
+                   tips:"密码为8-16位数字密码组合"
+               })
+               return false;
+            }
+            else{
+                this.setState({
+                    tips:""
+                })
+            }
         }
 
-        
-       
+        if(this.state.userName&&this.state.passWord){
             axios({
                 method: 'POST',
                 url:"https://www.taitansmart.com/gemini/user/register",
-                data:{
+                params:{
                     account: this.state.userName,
                     password: this.state.passWord
                 },
@@ -57,20 +87,21 @@ class Register extends Component{
             })
             .then((respones)=>{
                 //校验账号
+                console.log(respones);
                 console.log(respones.result_code);
 
-                        if (respones.result_code == "20000") {
+                        if (respones.data.result_code == "20000") {
                         console.log("你的邮箱号已经注册过了")
                             return false;
                         }
                         //注册成功
-                        if (respones.result_code == "00001") {
+                        if (respones.data.result_code == "00001") {
                             console.log("恭喜你，注册成功了~~");
                             //重定向
                             this.props.history.push('/Login');
                         }
                         //账号或密码为空
-                        if (respones.result_code == "10000") {
+                        if (respones.data.result_code == "10000") {
                             console.log("你的账号或密码为空");
                             return false;
                         }
@@ -78,6 +109,10 @@ class Register extends Component{
             .then(error=>{
                 console.log(error);
             })
+
+        }
+       
+           
         
 
         
