@@ -36,6 +36,9 @@ componentDidMount() {
             console.log(error);
         })
 }
+goBack(){
+    this.props.history.goBack();
+}
   render(){
     const {
       title,
@@ -51,6 +54,8 @@ componentDidMount() {
     <div className="rating_block">评分：<span className="rating">{rating.average}</span> 评论次数：<span  className="ratings_count">{ratings_count}</span></div>
     <img src={imgUrl} alt="" />
     <div className="summary">{summary}</div>
+
+    <div className="back" onClick={()=>{this.goBack()}}>返回</div>
   </div>
       )
   }

@@ -6,12 +6,29 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import commonData from './sotre/common';
 import loginData from './sotre/login';
+import Loadable from 'react-loadable';
+import Loading from "./component/Loading/Loading";
 const store = {
     loginData: loginData,
     commonData: commonData
 }
+
+
+
+
+
+
+
+
+const LoadableComponent  = Loadable({
+    loader: () => import('./App'),
+    loading: Loading,
+});
+
+
+
 ReactDOM.render((<Provider  {...store}>
-        <App />
+        <LoadableComponent  />
     </Provider>), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

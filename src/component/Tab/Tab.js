@@ -6,7 +6,9 @@ class Tab extends Component{
  render(){
      return(
          <div className="tab">
-            <h2>豆瓣</h2>
+            <h2>
+                <NavLink to="/">豆瓣</NavLink>
+            </h2>
              <ul>
                  <li>
                      <NavLink to="/Movie">电影</NavLink>

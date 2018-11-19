@@ -31,8 +31,9 @@ class App extends Component {
             <Tab />
             <div className="content_box">
               <Switch>
-                <Route exact path="/" component={Register} />
-                <Route exact path="/Login" component={Login} />
+                <Route exact path="/" component={Home} />
+                <Route path="/Register" component={Register} />
+                <Route path="/Login" component={Login} />
                 <Route path="/Movie" component={Movie} />
                 <Route exact path="/Group" component={Group} />
                 <Route path="/Detail/:id" component={Detail} />

@@ -11,7 +11,8 @@ class Store {
             account: this.name,
             password: this.pass
         }
-        axios.post('https://www.taitansmart.com/gemini/user/login', params).then(rs => {
+        axios.post('https://www.taitansmart.com/gemini/user/login', params)
+        .then(rs => {
             if (rs.data.result_code === "10000") {
                 // 存储登录数据
                 localStorage.setItem('account', JSON.stringify(rs));
